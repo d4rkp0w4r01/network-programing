@@ -19,7 +19,7 @@ def send_request(request):
             if len(part) < 1024:
                 break  # Nếu số byte nhận được ít hơn 1024, nghĩa là đã nhận hết dữ liệu
         response = json.loads(data.decode())  # Giải mã dữ liệu từ bytes sang string và chuyển đổi từ JSON sang dictionary
-        return response  # Trả về phản hồi từ server
+        return response  # Trả về phản hồi từ server => chỗ này chỉ hiển thị response không hiển thị bất thứ gì khác ngoài response nhé, gọi gì trả nấy !
     except ConnectionResetError as e:
         print(f"Error: Connection to the server was lost. {e}")  # Thông báo lỗi nếu mất kết nối với server
         return {"status": "error", "message": "Connection to the server was lost."}  # Trả về thông báo lỗi
@@ -62,7 +62,7 @@ def login():
             token = response["token"]  # Lưu token nếu đăng nhập thành công
             print("Login successful!")  # Thông báo đăng nhập thành công
         else:
-            print(response["message"])  # Hiển thị thông báo lỗi từ server
+            print(response["message"])  # Hiển thị thông báo lỗi từ server => chỗ này chỉ hiển thị message không hiển thị status nhé, gọi gì trả nấy !
     except Exception as e:
         print(f"Error during login: {e}")  # Thông báo lỗi nếu xảy ra trong quá trình đăng nhập
 
@@ -79,7 +79,7 @@ def chat():
             if message.lower() == "exit":
                 break  # Thoát khỏi chức năng chat nếu người dùng nhập 'exit'
             response = send_request({"action": "chat", "token": token, "message": message})  # Gửi tin nhắn tới server
-            print(response["message"])  # Hiển thị phản hồi từ server
+            print(response["message"])  # Hiển thị phản hồi từ server => chỗ này chỉ hiển thị message không hiển thị status nhé, gọi gì trả nấy !
     except Exception as e:
         print(f"Error during chat: {e}")  # Thông báo lỗi nếu xảy ra trong quá trình chat
 
@@ -119,7 +119,7 @@ def add_project():
                 "project_name": project_name,
                 "members": [member.strip() for member in members.split(',')]  # Chuyển đổi danh sách thành viên thành mảng
             })  # Gửi yêu cầu tạo dự án mới tới server
-            print(response["message"])  # Hiển thị phản hồi từ server
+            print(response["message"])  # Hiển thị phản hồi từ server => chỗ này chỉ hiển thị message không hiển thị status nhé, gọi gì trả nấy !
     except Exception as e:
         print(f"Error adding project: {e}")  # Thông báo lỗi nếu xảy ra trong quá trình thêm dự án
 
@@ -170,7 +170,7 @@ def add_task():
             "task_name": task_name,
             "members": [member.strip() for member in members.split(',')]  # Chuyển đổi danh sách thành viên thành mảng
         })  # Gửi yêu cầu thêm công việc mới tới server
-        print(response["message"])  # Hiển thị phản hồi từ server
+        print(response["message"])  # Hiển thị phản hồi từ server => chỗ này chỉ hiển thị message không hiển thị status nhé, gọi gì trả nấy !
     except Exception as e:
         print(f"Error adding task: {e}")  # Thông báo lỗi nếu xảy ra trong quá trình thêm công việc
 

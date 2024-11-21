@@ -119,7 +119,7 @@ def register(username, password):
         # Giải thích:
         # - Sử dụng câu lệnh INSERT để thêm bản ghi mới vào bảng 'users'
         # - Các giá trị được truyền vào thông qua tuple (username, hashed_password)
-        # - Dấu '?' là placeholder để ngăn chặn SQL Injection
+        # - Dấu '?' là placeholder để ngăn chặn SQL Injection => liên quan đến bảo mật chỗ này không quan trọng
 
         conn.commit()  # Lưu thay đổi vào cơ sở dữ liệu
         logging.info(f"User registered: {username}")  # Ghi log thông báo người dùng đã đăng ký

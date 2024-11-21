@@ -90,7 +90,7 @@ def view_chats():
     try:
         response = send_request({"action": "get_all_chats"})  # Gửi yêu cầu lấy tất cả tin nhắn chat
         for chat in response:
-            print(f"{chat['username']} ({chat['timestamp']}): {chat['message']}")  # Hiển thị từng tin nhắn cùng thông tin người gửi và thời gian
+            print(f"{chat['username']} ({chat['timestamp']}): {chat['message']}")  # Hiển thị từng tin nhắn cùng thông tin người gửi và thời gian lấy từ bên server.py
     except Exception as e:
         print(f"Error viewing chats: {e}")  # Thông báo lỗi nếu xảy ra trong quá trình xem tin nhắn
 

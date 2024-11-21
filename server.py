@@ -123,7 +123,7 @@ def register(username, password):
 
         conn.commit()  # Lưu thay đổi vào cơ sở dữ liệu
         logging.info(f"User registered: {username}")  # Ghi log thông báo người dùng đã đăng ký
-        return {"status": "success", "message": "User registered successfully"}  # Trả về phản hồi thành công
+        return {"status": "success", "message": "User registered successfully"}  # Trả về phản hồi thành công => hiển thị bên client message
     except sqlite3.IntegrityError:
         return {"status": "error", "message": "Username already exists"}  # Thông báo lỗi nếu tên đăng nhập đã tồn tại
 
@@ -169,7 +169,7 @@ def chat(token, message):
 
         conn.commit()  # Lưu thay đổi
         logging.info(f"Message from {username}: {message}")  # Ghi log tin nhắn
-        return {"status": "success", "message": "Message sent"}  # Phản hồi thành công
+        return {"status": "success", "message": "Message sent"}  # Phản hồi thành công => hiển thị bên client message
     return {"status": "error", "message": "Authentication failed"}  # Thông báo lỗi nếu xác thực thất bại
 
 def get_all_chats():
@@ -215,7 +215,7 @@ def create_project(token, project_name, members):
         conn.commit()  # Lưu thay đổi
         logging.info(f"Project created: {project_name} by {username} with members {members}")
         # Ghi log thông tin dự án được tạo
-        return {"status": "success", "message": "Project created successfully"}  # Phản hồi thành công
+        return {"status": "success", "message": "Project created successfully"}  # Phản hồi thành công => hiển thị bên client message
     return {"status": "error", "message": "Invalid token"}  # Thông báo lỗi nếu token không hợp lệ
 
 def add_task(token, project_id, task_name, members):
@@ -250,7 +250,7 @@ def add_task(token, project_id, task_name, members):
             conn.commit()  # Lưu thay đổi
             logging.info(f"Task '{task_name}' added to project {project_id} by {username}")
             # Ghi log thông tin công việc được thêm
-            return {"status": "success", "message": "Task added successfully"}  # Phản hồi thành công
+            return {"status": "success", "message": "Task added successfully"}  # Phản hồi thành công => hiển thị bên client message
     return {"status": "error", "message": "Only project owner can add tasks"}  # Thông báo lỗi nếu không phải chủ sở hữu dự án
 
 def get_projects():
